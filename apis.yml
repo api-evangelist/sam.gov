@@ -29,7 +29,6 @@ apis:
       https://open.gsa.gov/api/location-public-api/
     image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
     humanURL: https://open.gsa.gov/api/location-public-api/
-    overlays: []
 maintainers:
   - FN: API Evangelist
     email: info@apievangelist.com
