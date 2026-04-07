@@ -9,8 +9,8 @@ type: Index
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 tags:
   - Federal Government
-  - Procurement
   - Location Services
+  - Procurement
 url: >-
   https://raw.githubusercontent.com/api-evangelist/sam.gov/refs/heads/main/apis.yml
 created: '2024-03-29'
@@ -26,8 +26,8 @@ apis:
       United States and Foreign Countries.
     humanURL: https://open.gsa.gov/api/location-public-api/
     tags:
-      - Location
       - Government
+      - Location
       - Validation
     properties:
       - type: Documentation
