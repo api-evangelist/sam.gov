@@ -1,0 +1,107 @@
+extends: spectral:oas
+rules:
+
+  # SAM.gov API key is required on all operations
+  sam-gov-api-key-required:
+    description: SAM.gov APIs require an api_key query parameter
+    message: "Operation '{{path}}' must include an api_key query parameter"
+    given: "$.paths[*][get,post,put,patch,delete]"
+    then:
+      - field: parameters
+        function: truthy
+    severity: error
+
+  # All operations must have summaries in Title Case
+  sam-gov-summary-title-case:
+    description: Operation summaries must use Title Case
+    message: "Summary '{{value}}' should use Title Case"
+    given: "$.paths[*][*].summary"
+    then:
+      function: pattern
+      functionOptions:
+        match: "^[A-Z]"
+    severity: warn
+
+  # All operations must have descriptions
+  sam-gov-operation-description:
+    description: Operations must have descriptions
+    message: "Operation at '{{path}}' must have a description"
+    given: "$.paths[*][get,post,put,patch,delete]"
+    then:
+      - field: description
+        function: truthy
+    severity: warn
+
+  # Responses must be defined
+  sam-gov-responses-required:
+    description: Operations must define responses
+    message: "Operation at '{{path}}' must define responses"
+    given: "$.paths[*][get,post,put,patch,delete]"
+    then:
+      - field: responses
+        function: truthy
+    severity: error
+
+  # GET operations should return 200
+  sam-gov-get-200-response:
+    description: GET operations must define a 200 response
+    message: "GET operation at '{{path}}' should have a 200 response"
+    given: "$.paths[*].get"
+    then:
+      - field: responses.200
+        function: truthy
+    severity: warn
+
+  # Operations must have tags
+  sam-gov-operation-tags:
+    description: Operations must have at least one tag
+    message: "Operation at '{{path}}' must have at least one tag"
+    given: "$.paths[*][get,post,put,patch,delete]"
+    then:
+      - field: tags
+        function: truthy
+    severity: warn
+
+  # Server URL must be defined
+  sam-gov-servers-defined:
+    description: API must define servers
+    message: "API must have servers defined"
+    given: "$"
+    then:
+      - field: servers
+        function: truthy
+    severity: error
+
+  # Info section must be complete
+  sam-gov-info-complete:
+    description: Info section must be complete
+    message: "API info must have a title, description, and version"
+    given: "$.info"
+    then:
+      - field: title
+        function: truthy
+      - field: description
+        function: truthy
+      - field: version
+        function: truthy
+    severity: error
+
+  # Paths should use kebab-case
+  sam-gov-path-kebab-case:
+    description: API paths should use kebab-case
+    message: "Path '{{path}}' should use kebab-case"
+    given: "$.paths"
+    then:
+      function: pattern
+      functionOptions:
+        match: "^\\/[a-z0-9/{}\\-]+$"
+    severity: hint
+
+  # Parameters must have descriptions
+  sam-gov-parameter-descriptions:
+    description: Parameters must have descriptions
+    message: "Parameter '{{value}}' must have a description"
+    given: "$.paths[*][*].parameters[*].name"
+    then:
+      function: truthy
+    severity: hint

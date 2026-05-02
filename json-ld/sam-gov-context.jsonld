@@ -1,0 +1,88 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "schema": "https://schema.org/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "gov": "https://schema.org/GovernmentOrganization",
+    "sam": "https://api-evangelist.github.io/sam.gov/vocab#",
+    "dcat": "http://www.w3.org/ns/dcat#",
+
+    "ContractOpportunity": {
+      "@id": "schema:Offer",
+      "@context": {
+        "noticeId": "@id",
+        "title": "schema:name",
+        "description": "schema:description",
+        "type": "schema:additionalType",
+        "solicitationNumber": "sam:solicitationNumber",
+        "naicsCode": "sam:naicsCode",
+        "classificationCode": "sam:classificationCode",
+        "department": "schema:provider",
+        "placeOfPerformance": "schema:areaServed",
+        "responseDeadLine": {
+          "@id": "schema:validThrough",
+          "@type": "xsd:dateTime"
+        },
+        "active": "schema:availability",
+        "uiLink": "schema:url",
+        "postedDate": {
+          "@id": "schema:datePosted",
+          "@type": "xsd:date"
+        },
+        "modifiedDate": {
+          "@id": "schema:dateModified",
+          "@type": "xsd:date"
+        }
+      }
+    },
+
+    "City": {
+      "@id": "schema:City",
+      "@context": {
+        "cityCode": "@id",
+        "cityName": "schema:name",
+        "stateCode": "schema:addressRegion",
+        "stateName": "schema:addressRegion",
+        "countryCode": "schema:addressCountry",
+        "countryName": "schema:addressCountry",
+        "countyCode": "sam:countyCode",
+        "countyName": "sam:countyName",
+        "activeInd": "sam:activeIndicator"
+      }
+    },
+
+    "State": {
+      "@id": "schema:AdministrativeArea",
+      "@context": {
+        "stateCode": "@id",
+        "stateName": "schema:name",
+        "countryCode": "schema:containedInPlace",
+        "activeInd": "sam:activeIndicator"
+      }
+    },
+
+    "Entity": {
+      "@id": "schema:Organization",
+      "@context": {
+        "ueiSAM": "@id",
+        "legalBusinessName": "schema:legalName",
+        "physicalAddress": "schema:address",
+        "registrationStatus": "sam:registrationStatus",
+        "expirationDate": {
+          "@id": "sam:registrationExpiration",
+          "@type": "xsd:date"
+        }
+      }
+    },
+
+    "GovernmentAgency": {
+      "@id": "schema:GovernmentOrganization",
+      "@context": {
+        "departmentId": "@id",
+        "departmentName": "schema:name",
+        "subTier": "sam:subTier",
+        "office": "sam:office"
+      }
+    }
+  }
+}

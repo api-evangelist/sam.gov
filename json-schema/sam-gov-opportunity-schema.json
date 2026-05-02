@@ -1,0 +1,195 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.github.io/sam.gov/json-schema/sam-gov-opportunity-schema.json",
+  "title": "SAM.gov Contract Opportunity",
+  "description": "A federal contract opportunity published on SAM.gov",
+  "type": "object",
+  "properties": {
+    "noticeId": {
+      "type": "string",
+      "description": "Unique identifier for the notice"
+    },
+    "title": {
+      "type": "string",
+      "description": "Title of the contract opportunity"
+    },
+    "solicitationNumber": {
+      "type": "string",
+      "description": "Solicitation number assigned by the agency"
+    },
+    "type": {
+      "type": "string",
+      "description": "Type of notice",
+      "enum": [
+        "Presolicitation",
+        "Combined Synopsis/Solicitation",
+        "Solicitation",
+        "Award Notice",
+        "Special Notice",
+        "Sources Sought",
+        "Intent to Bundle Requirements",
+        "Justification and Approval"
+      ]
+    },
+    "baseType": {
+      "type": "string",
+      "description": "Base type of the notice"
+    },
+    "archiveType": {
+      "type": "string",
+      "description": "Archive type"
+    },
+    "archiveDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Date when opportunity will be archived"
+    },
+    "naicsCode": {
+      "type": "string",
+      "description": "North American Industry Classification System code"
+    },
+    "classificationCode": {
+      "type": "string",
+      "description": "Federal Supply Classification (FSC) or Product Service Code (PSC)"
+    },
+    "department": {
+      "type": "object",
+      "description": "Contracting department/agency details",
+      "properties": {
+        "departmentId": {
+          "type": "string"
+        },
+        "departmentName": {
+          "type": "string"
+        },
+        "subTier": {
+          "type": "string"
+        },
+        "office": {
+          "type": "string"
+        }
+      }
+    },
+    "officeAddress": {
+      "type": "object",
+      "description": "Office address of the contracting office",
+      "properties": {
+        "city": {
+          "type": "string"
+        },
+        "state": {
+          "type": "string"
+        },
+        "zip": {
+          "type": "string"
+        },
+        "countryCode": {
+          "type": "string"
+        }
+      }
+    },
+    "placeOfPerformance": {
+      "type": "object",
+      "description": "Location where work will be performed",
+      "properties": {
+        "city": {
+          "type": "object",
+          "properties": {
+            "code": {"type": "string"},
+            "name": {"type": "string"}
+          }
+        },
+        "state": {
+          "type": "object",
+          "properties": {
+            "code": {"type": "string"},
+            "name": {"type": "string"}
+          }
+        },
+        "country": {
+          "type": "object",
+          "properties": {
+            "code": {"type": "string"},
+            "name": {"type": "string"}
+          }
+        },
+        "zip": {
+          "type": "string"
+        }
+      }
+    },
+    "description": {
+      "type": "string",
+      "description": "Full text description of the opportunity"
+    },
+    "organizationType": {
+      "type": "string",
+      "description": "Type of organization"
+    },
+    "setAside": {
+      "type": "object",
+      "description": "Small business set-aside details",
+      "properties": {
+        "setAsideCode": {
+          "type": "string"
+        },
+        "setAsideDescription": {
+          "type": "string"
+        }
+      }
+    },
+    "responseDeadLine": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Deadline for responses/proposals"
+    },
+    "active": {
+      "type": "string",
+      "enum": ["Yes", "No"],
+      "description": "Whether the opportunity is currently active"
+    },
+    "award": {
+      "type": "object",
+      "description": "Award details if this notice is an award",
+      "properties": {
+        "date": {
+          "type": "string",
+          "format": "date"
+        },
+        "number": {
+          "type": "string"
+        },
+        "amount": {
+          "type": "string"
+        },
+        "awardee": {
+          "type": "object",
+          "properties": {
+            "name": {"type": "string"},
+            "location": {
+              "type": "object"
+            },
+            "ueiSAM": {"type": "string"}
+          }
+        }
+      }
+    },
+    "uiLink": {
+      "type": "string",
+      "format": "uri",
+      "description": "URL to view opportunity on SAM.gov"
+    },
+    "postedDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Date opportunity was posted"
+    },
+    "modifiedDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Date opportunity was last modified"
+    }
+  },
+  "required": ["noticeId", "title", "type"],
+  "additionalProperties": false
+}

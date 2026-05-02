@@ -1,0 +1,26 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "https://api.sam.gov/locationservices/v1/zip",
+    "parameters": {
+      "api_key": "{SAM_GOV_API_KEY}",
+      "zip": "20401"
+    }
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "zip": "20401",
+      "cityList": [
+        {
+          "cityCode": "WAS",
+          "cityName": "Washington",
+          "stateCode": "DC",
+          "countyCode": "001",
+          "countyName": "District of Columbia",
+          "countryCode": "US"
+        }
+      ]
+    }
+  }
+}

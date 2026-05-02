@@ -1,0 +1,125 @@
+naftiko: "1.0.0-alpha1"
+
+info:
+  label: "SAM.gov Federal Procurement"
+  description: >-
+    Federal procurement workflow for validating vendor registration data against
+    SAM.gov location services. Used by government contractors, procurement officers,
+    and vendor registration systems to validate address data before submission to SAM.gov.
+  tags:
+    - Government
+    - Federal Procurement
+    - Location Validation
+    - Vendor Registration
+    - GSA
+    - SAM.gov
+  created: "2026-05-02"
+  modified: "2026-05-02"
+
+binds:
+  - namespace: env
+    keys:
+      SAM_GOV_API_KEY: SAM_GOV_API_KEY
+
+capability:
+  consumes:
+    - import: sam-location
+      location: ./shared/sam-gov-location-services.yaml
+
+  exposes:
+    - type: rest
+      port: 8080
+      namespace: federal-procurement-api
+      description: "Unified REST API for SAM.gov federal procurement location validation."
+      resources:
+        - path: /v1/cities
+          name: cities
+          description: "Validated city data from SAM.gov"
+          operations:
+            - method: GET
+              name: get-cities
+              description: "Get list of cities for vendor address validation"
+              call: "sam-location.get-cities"
+              with:
+                cc: "rest.cc"
+                q: "rest.q"
+                active: "rest.active"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/states
+          name: states
+          description: "Validated state and province data from SAM.gov"
+          operations:
+            - method: GET
+              name: get-states
+              description: "Get list of states for vendor address validation"
+              call: "sam-location.get-states"
+              with:
+                cc: "rest.cc"
+                q: "rest.q"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/zip-codes
+          name: zip-codes
+          description: "ZIP code validation against SAM.gov data"
+          operations:
+            - method: GET
+              name: validate-zip-code
+              description: "Validate a ZIP code for SAM.gov submission"
+              call: "sam-location.validate-zip-code"
+              with:
+                zip: "rest.zip"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+    - type: mcp
+      port: 9080
+      namespace: federal-procurement-mcp
+      transport: http
+      description: "MCP server for AI-assisted federal procurement and SAM.gov location validation."
+      tools:
+        - name: lookup-cities
+          description: "Look up and validate city names against SAM.gov for vendor address submission"
+          hints:
+            readOnly: true
+            idempotent: true
+            openWorld: true
+          call: "sam-location.get-cities"
+          with:
+            cc: "tools.country_code"
+            q: "tools.city_name"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: lookup-states
+          description: "Look up and validate US states and international provinces against SAM.gov"
+          hints:
+            readOnly: true
+            idempotent: true
+            openWorld: true
+          call: "sam-location.get-states"
+          with:
+            cc: "tools.country_code"
+            q: "tools.state_name"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: validate-zip-code
+          description: "Validate a ZIP code against SAM.gov location data for vendor registration accuracy"
+          hints:
+            readOnly: true
+            idempotent: true
+            openWorld: true
+          call: "sam-location.validate-zip-code"
+          with:
+            zip: "tools.zip_code"
+          outputParameters:
+            - type: object
+              mapping: "$."

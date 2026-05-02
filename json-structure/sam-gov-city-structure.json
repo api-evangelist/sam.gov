@@ -1,0 +1,16 @@
+{
+  "title": "SAM.gov City Structure",
+  "description": "JSON structure documentation for the SAM.gov city entity from the Location Services API",
+  "type": "object",
+  "structure": {
+    "cityCode": "string - SAM.gov city code [required]",
+    "cityName": "string - Full city name [required]",
+    "stateCode": "string - State/province code",
+    "stateName": "string - Full state/province name",
+    "countyCode": "string - County code",
+    "countyName": "string - County name",
+    "countryCode": "string(ISO 3166-1) - Country code [required]",
+    "countryName": "string - Full country name",
+    "activeInd": "string(Y|N) - Active indicator"
+  }
+}

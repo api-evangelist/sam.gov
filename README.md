@@ -1,41 +1,56 @@
-# SAM.gov (sam.gov)
-SAM.gov (System for Award Management) is the official US government system for vendor registration and federal procurement. The SAM.gov Public Location Services API provides Location Services data including Country, State, City, and ZIP code validation for data submitted to SAM.gov.
+# SAM.gov
 
-**URL:** [Visit APIs.json URL](https://raw.githubusercontent.com/api-evangelist/sam.gov/refs/heads/main/apis.yml)
-
-## Scope
-
-- **Type:** Index 
-- **Position:** Consuming 
-- **Access:** 3rd-Party 
-
-## Tags:
-
- - Federal Government, Procurement, Location Services
-
-## Timestamps
-
-- **Created:** 2024-03-29 
-- **Modified:** 2026-03-16 
+SAM.gov (System for Award Management) is the official US government system for vendor registration and federal procurement, operated by the General Services Administration (GSA). SAM.gov consolidates multiple legacy acquisition systems and provides APIs for contract opportunities, entity management, federal hierarchy, and location validation services.
 
 ## APIs
 
-### SAM.gov Public Location Services API
-The Public Location Services API provides Location Services data (Country, State, City, and ZIP) and is to be used when validating location data that is being submitted to SAM.gov. Location Services State API supports both United States and Foreign Countries.
+| API | Description |
+|---|---|
+| [Location Services API](https://open.gsa.gov/api/location-public-api/) | Validate city, state, and ZIP code data for SAM.gov submissions |
+| [Get Opportunities Public API](https://open.gsa.gov/api/get-opportunities-public-api/) | Retrieve published federal contract opportunities |
+| [Opportunity Management API](https://open.gsa.gov/api/opportunities-api/) | Submit and manage contract opportunity notices |
+| [Entity Management API](https://open.gsa.gov/api/entity-api/) | Query vendor/contractor registration data |
+| [Federal Hierarchy Public API](https://open.gsa.gov/api/fh-public-api/) | Retrieve federal organizational hierarchy |
+| [Contract Awards API](https://open.gsa.gov/api/contract-awards/) | Access federal contract award data |
 
-**Human URL:** [https://open.gsa.gov/api/location-public-api/](https://open.gsa.gov/api/location-public-api/)
+## Resources
 
+- **SAM.gov Portal**: [sam.gov](https://sam.gov)
+- **GSA Open Technology**: [open.gsa.gov/api](https://open.gsa.gov/api/)
+- **API Key Registration**: [GSA Developer Portal](https://open.gsa.gov/api/get-opportunities-public-api/#getting-started)
+- **GitHub (GSA)**: [github.com/GSA](https://github.com/GSA)
+- **Data Catalog**: [catalog.data.gov](https://catalog.data.gov)
 
-#### Tags:
+## Artifacts
 
- - Location, Government, Validation
+### OpenAPI Specs
+- [sam-gov-location-services-openapi.yml](openapi/sam-gov-location-services-openapi.yml) — Location Services API (cities, states, ZIP validation)
 
-#### Properties
+### Spectral Rules
+- [sam-gov-rules.yml](rules/sam-gov-rules.yml) — API style and compliance rules
 
-- [Documentation](https://open.gsa.gov/api/location-public-api/)
+### Capabilities
+- [federal-procurement.yaml](capabilities/federal-procurement.yaml) — Location validation for vendor registration
+- [shared/sam-gov-location-services.yaml](capabilities/shared/sam-gov-location-services.yaml) — Location Services API consumed definition
 
-## Maintainers
+### JSON Schema
+- [sam-gov-city-schema.json](json-schema/sam-gov-city-schema.json) — City entity schema
+- [sam-gov-opportunity-schema.json](json-schema/sam-gov-opportunity-schema.json) — Federal contract opportunity schema
 
-**FN:** Kin Lane
+### JSON Structure
+- [sam-gov-city-structure.json](json-structure/sam-gov-city-structure.json) — City structure documentation
+- [sam-gov-opportunity-structure.json](json-structure/sam-gov-opportunity-structure.json) — Opportunity structure documentation
 
-**Email:** kin@apievangelist.com
+### JSON-LD
+- [sam-gov-context.jsonld](json-ld/sam-gov-context.jsonld) — Linked data context for federal procurement entities
+
+### Examples
+- [sam-gov-get-cities-example.json](examples/sam-gov-get-cities-example.json) — Get cities request/response
+- [sam-gov-validate-zip-example.json](examples/sam-gov-validate-zip-example.json) — Validate ZIP code request/response
+
+### Vocabulary
+- [sam-gov-vocabulary.yml](vocabulary/sam-gov-vocabulary.yml) — Federal procurement terminology
+
+## Maintained By
+
+[Kin Lane](mailto:kin@apievangelist.com) — [API Evangelist](https://apievangelist.com)

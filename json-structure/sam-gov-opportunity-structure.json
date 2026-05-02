@@ -1,0 +1,60 @@
+{
+  "title": "SAM.gov Contract Opportunity Structure",
+  "description": "JSON structure documentation for a SAM.gov federal contract opportunity",
+  "type": "object",
+  "structure": {
+    "noticeId": "string - Unique notice identifier [required]",
+    "title": "string - Opportunity title [required]",
+    "solicitationNumber": "string - Solicitation number",
+    "type": "string - Notice type (Presolicitation|Solicitation|Award Notice|Special Notice|Sources Sought|etc.) [required]",
+    "archiveDate": "string(date) - Archive date",
+    "naicsCode": "string - NAICS code",
+    "classificationCode": "string - FSC/PSC code",
+    "department": {
+      "departmentId": "string - Department identifier",
+      "departmentName": "string - Department name",
+      "subTier": "string - Sub-tier agency",
+      "office": "string - Contracting office"
+    },
+    "officeAddress": {
+      "city": "string - Office city",
+      "state": "string - Office state",
+      "zip": "string - Office ZIP",
+      "countryCode": "string - Office country code"
+    },
+    "placeOfPerformance": {
+      "city": {
+        "code": "string - City code",
+        "name": "string - City name"
+      },
+      "state": {
+        "code": "string - State code",
+        "name": "string - State name"
+      },
+      "country": {
+        "code": "string - Country code",
+        "name": "string - Country name"
+      },
+      "zip": "string - ZIP code"
+    },
+    "description": "string - Full opportunity description",
+    "setAside": {
+      "setAsideCode": "string - Set-aside code",
+      "setAsideDescription": "string - Set-aside description"
+    },
+    "responseDeadLine": "string(date-time) - Response deadline",
+    "active": "string(Yes|No) - Active status",
+    "award": {
+      "date": "string(date) - Award date",
+      "number": "string - Award number",
+      "amount": "string - Award amount",
+      "awardee": {
+        "name": "string - Awardee company name",
+        "ueiSAM": "string - Unique Entity Identifier"
+      }
+    },
+    "uiLink": "string(uri) - SAM.gov URL",
+    "postedDate": "string(date) - Posted date",
+    "modifiedDate": "string(date) - Modified date"
+  }
+}

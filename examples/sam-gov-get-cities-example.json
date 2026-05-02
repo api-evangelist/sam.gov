@@ -1,0 +1,31 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "https://api.sam.gov/locationservices/v1/cities",
+    "parameters": {
+      "api_key": "{SAM_GOV_API_KEY}",
+      "cc": "US",
+      "q": "San Francisco",
+      "active": "Y"
+    }
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "totalRecords": 1,
+      "cityList": [
+        {
+          "cityCode": "SFO",
+          "cityName": "San Francisco",
+          "stateCode": "CA",
+          "stateName": "California",
+          "countyCode": "075",
+          "countyName": "San Francisco County",
+          "countryCode": "US",
+          "countryName": "United States",
+          "activeInd": "Y"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,150 @@
+vocabulary:
+  title: SAM.gov Vocabulary
+  description: >-
+    Vocabulary and taxonomy for the System for Award Management (SAM.gov),
+    covering federal procurement, entity management, contract opportunities,
+    and government contracting terminology.
+  version: '1.0'
+  created: '2026-05-02'
+  provider: GSA / SAM.gov
+
+terms:
+
+  # Core System Concepts
+  - term: SAM.gov
+    definition: >-
+      System for Award Management — the official US government system operated by
+      the General Services Administration (GSA) that consolidates federal acquisition
+      and award systems. Used for vendor registration, contract opportunities,
+      exclusions, and wage determinations.
+    related: [GSA, Federal Procurement, Entity Registration]
+    tags: [System, Government]
+
+  - term: GSA
+    definition: >-
+      General Services Administration — the US federal agency responsible for
+      managing SAM.gov and providing centralized procurement services for federal
+      agencies.
+    related: [SAM.gov, Federal Procurement]
+    tags: [Agency, Government]
+
+  - term: UEI SAM
+    definition: >-
+      Unique Entity Identifier — the 12-character alphanumeric identifier assigned
+      to organizations registered in SAM.gov, replacing the DUNS number in 2022.
+      Required for all entities receiving federal awards.
+    related: [Entity Registration, DUNS]
+    tags: [Identifier, Entity]
+
+  - term: Entity Registration
+    definition: >-
+      The process of registering a business or organization in SAM.gov to become
+      eligible to bid on and receive federal contracts and grants. Requires annual
+      renewal and includes legal, financial, and organizational information.
+    related: [UEI SAM, CAGE Code, Federal Procurement]
+    tags: [Process, Entity]
+
+  - term: CAGE Code
+    definition: >-
+      Commercial and Government Entity Code — a 5-character identifier assigned by
+      the Defense Logistics Agency to entities that do business with the US government.
+      Associated with SAM.gov entity registrations.
+    related: [UEI SAM, Entity Registration]
+    tags: [Identifier, Entity]
+
+  # Contract Opportunity Types
+  - term: Presolicitation
+    definition: >-
+      An advance notice of a planned procurement published in SAM.gov before the
+      formal solicitation. Gives vendors advance notice to prepare responses.
+    related: [Solicitation, Contract Opportunity]
+    tags: [Notice Type, Procurement]
+
+  - term: Solicitation
+    definition: >-
+      A formal request for proposals, quotations, or bids from vendors for a
+      specific federal procurement. Published in SAM.gov for open competition.
+    related: [Presolicitation, Contract Opportunity, Award Notice]
+    tags: [Notice Type, Procurement]
+
+  - term: Sources Sought
+    definition: >-
+      A market research notice published in SAM.gov to identify potential vendors
+      capable of fulfilling a requirement. Not a formal solicitation; used to
+      determine competitive range and set-aside eligibility.
+    related: [Solicitation, Presolicitation]
+    tags: [Notice Type, Procurement]
+
+  - term: Award Notice
+    definition: >-
+      A notice published in SAM.gov announcing the award of a federal contract,
+      including the awardee name, award amount, and contract details.
+    related: [Solicitation, Contract Award]
+    tags: [Notice Type, Procurement]
+
+  # Classification Codes
+  - term: NAICS Code
+    definition: >-
+      North American Industry Classification System — a 6-digit code that classifies
+      industries and business activities. Used in SAM.gov to match opportunities
+      to eligible vendors by industry type.
+    related: [PSC Code, NAICS]
+    tags: [Classification, Standard]
+
+  - term: PSC Code
+    definition: >-
+      Product Service Code — a 4-character code used by the US government to
+      classify the products and services being procured in a contract opportunity.
+      Also known as Federal Supply Classification (FSC) code.
+    related: [NAICS Code]
+    tags: [Classification, Standard]
+
+  # Small Business Set-Asides
+  - term: Set-Aside
+    definition: >-
+      A restriction placed on a contract competition limiting eligible offerors
+      to specific small business categories (8(a), HUBZone, SDVOSB, WOSB, etc.)
+      to support socioeconomic procurement goals.
+    related: [Small Business, SDVOSB, HUBZone, 8a]
+    tags: [Procurement, Small Business]
+
+  - term: 8(a)
+    definition: >-
+      A SBA business development program set-aside for small businesses owned
+      by socially and economically disadvantaged individuals. 8(a) certified firms
+      receive special contracting preferences.
+    related: [Set-Aside, Small Business]
+    tags: [Set-Aside Type, Small Business]
+
+  - term: HUBZone
+    definition: >-
+      Historically Underutilized Business Zone — a SBA program providing
+      preferential contracting for small businesses in federally designated
+      economically distressed geographic areas.
+    related: [Set-Aside, Small Business]
+    tags: [Set-Aside Type, Small Business]
+
+  - term: SDVOSB
+    definition: >-
+      Service-Disabled Veteran-Owned Small Business — a contracting set-aside
+      category for small businesses majority-owned and controlled by service-disabled
+      US military veterans.
+    related: [Set-Aside, Small Business]
+    tags: [Set-Aside Type, Small Business]
+
+  # Location Services
+  - term: Location Services
+    definition: >-
+      The SAM.gov API service providing validated city, state, and ZIP code data
+      for use in vendor registrations and procurement forms. Supports both US
+      and international location validation.
+    related: [City, State, ZIP Code, API]
+    tags: [API, Location]
+
+  - term: Federal Hierarchy
+    definition: >-
+      The organizational structure of US federal agencies, departments, sub-agencies,
+      and contracting offices as maintained in SAM.gov. Used to identify the issuing
+      authority for contract opportunities.
+    related: [Department, Agency, Contracting Office]
+    tags: [Organization, Government]

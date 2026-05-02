@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.github.io/sam.gov/json-schema/sam-gov-city-schema.json",
+  "title": "SAM.gov City",
+  "description": "A city record from the SAM.gov Public Location Services API",
+  "type": "object",
+  "properties": {
+    "cityCode": {
+      "type": "string",
+      "description": "Unique city code identifier in SAM.gov"
+    },
+    "cityName": {
+      "type": "string",
+      "description": "Full city name"
+    },
+    "stateCode": {
+      "type": "string",
+      "description": "State or province code"
+    },
+    "stateName": {
+      "type": "string",
+      "description": "Full state or province name"
+    },
+    "countyCode": {
+      "type": "string",
+      "description": "County code"
+    },
+    "countyName": {
+      "type": "string",
+      "description": "County name"
+    },
+    "countryCode": {
+      "type": "string",
+      "description": "ISO 3166-1 alpha-2 country code (e.g. US)"
+    },
+    "countryName": {
+      "type": "string",
+      "description": "Full country name"
+    },
+    "activeInd": {
+      "type": "string",
+      "enum": ["Y", "N"],
+      "description": "Whether this city record is active (Y) or inactive (N)"
+    }
+  },
+  "required": ["cityCode", "cityName", "countryCode"],
+  "additionalProperties": false
+}
