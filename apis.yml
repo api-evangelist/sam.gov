@@ -136,7 +136,7 @@ common:
     url: https://github.com/GSA
   - type: DataCatalog
     url: https://catalog.data.gov
-  - type: Status
+  - type: StatusPage
     url: https://sam.gov/status
 
 maintainers:
