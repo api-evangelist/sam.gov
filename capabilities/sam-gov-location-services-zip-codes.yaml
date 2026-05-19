@@ -1,0 +1,102 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: SAM.gov Public Location Services API — ZIP Codes
+  description: 'SAM.gov Public Location Services API — ZIP Codes. 1 operations. Lead operation: Validate ZIP Code. Self-contained
+    Naftiko capability covering one Sam.gov business surface.'
+  tags:
+  - Sam.gov
+  - ZIP Codes
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    SAM_GOV_API_KEY: SAM_GOV_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: sam-gov-location-services-zip-codes
+    baseUri: https://api.sam.gov
+    description: SAM.gov Public Location Services API — ZIP Codes business capability. Self-contained, no shared references.
+    resources:
+    - name: locationservices-v1-zip
+      path: /locationservices/v1/zip
+      operations:
+      - name: validatezipcode
+        method: GET
+        description: Validate ZIP Code
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: api_key
+          in: query
+          type: string
+          description: SAM.gov Federal Government System Account API key
+          required: true
+        - name: zip
+          in: query
+          type: string
+          description: ZIP code to validate (5 digits for US postal codes)
+          required: true
+        - name: citycode
+          in: query
+          type: string
+          description: City code filter
+        - name: countycode
+          in: query
+          type: string
+          description: County code filter
+        - name: statecode
+          in: query
+          type: string
+          description: State code filter
+  exposes:
+  - type: rest
+    namespace: sam-gov-location-services-zip-codes-rest
+    port: 8080
+    description: REST adapter for SAM.gov Public Location Services API — ZIP Codes. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/locationservices/v1/zip
+      name: locationservices-v1-zip
+      description: REST surface for locationservices-v1-zip.
+      operations:
+      - method: GET
+        name: validatezipcode
+        description: Validate ZIP Code
+        call: sam-gov-location-services-zip-codes.validatezipcode
+        with:
+          api_key: rest.api_key
+          zip: rest.zip
+          citycode: rest.citycode
+          countycode: rest.countycode
+          statecode: rest.statecode
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: sam-gov-location-services-zip-codes-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for SAM.gov Public Location Services API — ZIP Codes. One tool per consumed operation, routed
+      inline through this capability's consumes block.
+    tools:
+    - name: validate-zip-code
+      description: Validate ZIP Code
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: sam-gov-location-services-zip-codes.validatezipcode
+      with:
+        api_key: tools.api_key
+        zip: tools.zip
+        citycode: tools.citycode
+        countycode: tools.countycode
+        statecode: tools.statecode
+      outputParameters:
+      - type: object
+        mapping: $.
