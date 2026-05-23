@@ -1,0 +1,11 @@
+name: SAM.gov Domain Vocabulary
+provider: SAM.gov
+providerId: sam.gov
+description: Tag-derived vocabulary for the SAM.gov API surface; sourced from openapi/ tags.
+terms:
+- term: Cities
+  description: City lookup and validation
+- term: States
+  description: State and province lookup
+- term: ZIP Codes
+  description: ZIP code validation

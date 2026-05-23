@@ -1,0 +1,38 @@
+{
+  "provider": "SAM.gov",
+  "providerId": "sam.gov",
+  "kind": "json-structure",
+  "description": "Structural overview of the SAM.gov API surface; extracted from openapi/.",
+  "schemaCount": 0,
+  "operationCount": 3,
+  "schemas": [],
+  "operations": [
+    {
+      "method": "GET",
+      "path": "/locationservices/v1/cities",
+      "operationId": "getCities",
+      "summary": "Get List of Cities",
+      "tags": [
+        "Cities"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/locationservices/v1/states",
+      "operationId": "getStates",
+      "summary": "Get List of States and Provinces",
+      "tags": [
+        "States"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/locationservices/v1/zip",
+      "operationId": "validateZipCode",
+      "summary": "Validate ZIP Code",
+      "tags": [
+        "ZIP Codes"
+      ]
+    }
+  ]
+}
