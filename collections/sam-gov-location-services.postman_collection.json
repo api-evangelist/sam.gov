@@ -1,0 +1,996 @@
+{
+  "item": [
+    {
+      "id": "680c52e4-71b7-4009-b4fc-f83e7e709962",
+      "name": "Cities",
+      "description": {
+        "content": "City lookup and validation",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "8882e10f-5097-4e0e-8b49-5a7ee52bfd99",
+          "name": "Get List of Cities",
+          "request": {
+            "name": "Get List of Cities",
+            "description": {
+              "content": "Retrieve a list of cities for a given country code. Supports searching by city name, active status, and city code filters. Used to validate city data being submitted to SAM.gov.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "locationservices",
+                "v1",
+                "cities"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "api_key",
+                  "value": "<string>",
+                  "description": "(Required) SAM.gov Federal Government System Account API key"
+                },
+                {
+                  "disabled": false,
+                  "key": "cc",
+                  "value": "<string>",
+                  "description": "Country code (ISO 3166-1 alpha-2, e.g. US for United States)"
+                },
+                {
+                  "disabled": false,
+                  "key": "searchby",
+                  "value": "<string>",
+                  "description": "Field to search by (e.g. cityname, citycode)"
+                },
+                {
+                  "disabled": false,
+                  "key": "searchvalue",
+                  "value": "<string>",
+                  "description": "Value to search for"
+                },
+                {
+                  "disabled": false,
+                  "key": "q",
+                  "value": "<string>",
+                  "description": "General query string for city name search"
+                },
+                {
+                  "disabled": false,
+                  "key": "active",
+                  "value": "<string>",
+                  "description": "Filter to active cities only (Y/N)"
+                },
+                {
+                  "disabled": false,
+                  "key": "citycode",
+                  "value": "<string>",
+                  "description": "City code to filter by"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "528c3bdc-ad19-4025-a6eb-28009604fe82",
+              "name": "Successful response with list of cities",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "locationservices",
+                    "v1",
+                    "cities"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api_key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "cc",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "searchby",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "searchvalue",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "active",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "citycode",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"totalRecords\": 9041,\n  \"cityList\": [\n    {\n      \"cityCode\": \"string\",\n      \"cityName\": \"string\",\n      \"stateCode\": \"string\",\n      \"countryCode\": \"string\",\n      \"activeInd\": \"string\"\n    },\n    {\n      \"cityCode\": \"string\",\n      \"cityName\": \"string\",\n      \"stateCode\": \"string\",\n      \"countryCode\": \"string\",\n      \"activeInd\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e77e74b8-79e2-4321-b15f-400ff91ce3f8",
+              "name": "Bad request - invalid parameters",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "locationservices",
+                    "v1",
+                    "cities"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api_key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "cc",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "searchby",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "searchvalue",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "active",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "citycode",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e7521502-2279-4539-826f-cc74714c7b0c",
+              "name": "Unauthorized - invalid or missing API key",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "locationservices",
+                    "v1",
+                    "cities"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api_key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "cc",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "searchby",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "searchvalue",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "active",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "citycode",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ef645379-e513-422c-978e-0ca6d079c190",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "locationservices",
+                    "v1",
+                    "cities"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api_key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "cc",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "searchby",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "searchvalue",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "active",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "citycode",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "215ff721-04fd-4f95-afa7-9c72bd2c4218",
+      "name": "States",
+      "description": {
+        "content": "State and province lookup",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "88980066-1de3-4b9b-9b5f-ba5086a8c28a",
+          "name": "Get List of States and Provinces",
+          "request": {
+            "name": "Get List of States and Provinces",
+            "description": {
+              "content": "Retrieve a list of states, provinces, and subdivisions for both the United States and foreign countries. Supports searching by state/province name or code. Used to validate state data submitted to SAM.gov.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "locationservices",
+                "v1",
+                "states"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "api_key",
+                  "value": "<string>",
+                  "description": "(Required) SAM.gov Federal Government System Account API key"
+                },
+                {
+                  "disabled": false,
+                  "key": "cc",
+                  "value": "<string>",
+                  "description": "Country code (ISO 3166-1 alpha-2, e.g. US for United States)"
+                },
+                {
+                  "disabled": false,
+                  "key": "searchby",
+                  "value": "<string>",
+                  "description": "Field to search by (e.g. statename, statecode)"
+                },
+                {
+                  "disabled": false,
+                  "key": "q",
+                  "value": "<string>",
+                  "description": "General query string for state name search"
+                },
+                {
+                  "disabled": false,
+                  "key": "active",
+                  "value": "<string>",
+                  "description": "Filter to active states/provinces only (Y/N)"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c94619c6-a14b-404a-9923-2148bb4936a0",
+              "name": "Successful response with list of states/provinces",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "locationservices",
+                    "v1",
+                    "states"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api_key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "cc",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "searchby",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "active",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"totalRecords\": 5729,\n  \"stateList\": [\n    {\n      \"stateCode\": \"string\",\n      \"stateName\": \"string\",\n      \"countryCode\": \"string\",\n      \"activeInd\": \"string\"\n    },\n    {\n      \"stateCode\": \"string\",\n      \"stateName\": \"string\",\n      \"countryCode\": \"string\",\n      \"activeInd\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "af2634f4-c483-4cdb-9c91-1440cb2213a5",
+              "name": "Bad request - invalid parameters",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "locationservices",
+                    "v1",
+                    "states"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api_key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "cc",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "searchby",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "active",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "48cfc855-a0aa-41c6-9dca-774ab6ed6e2b",
+              "name": "Unauthorized - invalid or missing API key",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "locationservices",
+                    "v1",
+                    "states"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api_key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "cc",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "searchby",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "active",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "cbf0bb20-3999-4a86-9b05-0c08870623f6",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "locationservices",
+                    "v1",
+                    "states"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api_key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "cc",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "searchby",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "active",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "4af88d82-cf77-4d5e-81e9-073a16a44442",
+      "name": "ZIP Codes",
+      "description": {
+        "content": "ZIP code validation",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "892a1deb-0dc0-4353-838f-7ec36a1a1872",
+          "name": "Validate ZIP Code",
+          "request": {
+            "name": "Validate ZIP Code",
+            "description": {
+              "content": "Validate a ZIP code and retrieve associated location data including city, county, and state information. Used to validate ZIP code data being submitted to SAM.gov entity registrations and procurement forms.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "locationservices",
+                "v1",
+                "zip"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "api_key",
+                  "value": "<string>",
+                  "description": "(Required) SAM.gov Federal Government System Account API key"
+                },
+                {
+                  "disabled": false,
+                  "key": "zip",
+                  "value": "<string>",
+                  "description": "(Required) ZIP code to validate (5 digits for US postal codes)"
+                },
+                {
+                  "disabled": false,
+                  "key": "citycode",
+                  "value": "<string>",
+                  "description": "City code filter"
+                },
+                {
+                  "disabled": false,
+                  "key": "countycode",
+                  "value": "<string>",
+                  "description": "County code filter"
+                },
+                {
+                  "disabled": false,
+                  "key": "statecode",
+                  "value": "<string>",
+                  "description": "State code filter"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8c6f44d9-27c8-4295-9da3-aa3548ec1de1",
+              "name": "Successful response with ZIP code validation data",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "locationservices",
+                    "v1",
+                    "zip"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api_key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "zip",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "citycode",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "countycode",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "statecode",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"zip\": \"string\",\n  \"cityList\": [\n    {\n      \"cityCode\": \"string\",\n      \"cityName\": \"string\",\n      \"stateCode\": \"string\",\n      \"countyCode\": \"string\",\n      \"countyName\": \"string\",\n      \"countryCode\": \"string\"\n    },\n    {\n      \"cityCode\": \"string\",\n      \"cityName\": \"string\",\n      \"stateCode\": \"string\",\n      \"countyCode\": \"string\",\n      \"countyName\": \"string\",\n      \"countryCode\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b4d550f1-e22d-478e-b2bd-44ca62bea096",
+              "name": "Bad request - invalid ZIP code format",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "locationservices",
+                    "v1",
+                    "zip"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api_key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "zip",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "citycode",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "countycode",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "statecode",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "84e7a073-124c-448f-a2bd-cd01c927c755",
+              "name": "Unauthorized - invalid or missing API key",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "locationservices",
+                    "v1",
+                    "zip"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api_key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "zip",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "citycode",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "countycode",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "statecode",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f8e4b3d2-195b-4892-a94d-12b18382551a",
+              "name": "ZIP code not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "locationservices",
+                    "v1",
+                    "zip"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api_key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "zip",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "citycode",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "countycode",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "statecode",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d8705b4a-3609-4209-99c2-d5724a8f218c",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "locationservices",
+                    "v1",
+                    "zip"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api_key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "zip",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "citycode",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "countycode",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "statecode",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.sam.gov",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "770fa641-1e62-4bbe-86c6-b52478c2e3ce",
+    "name": "SAM.gov Public Location Services API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The SAM.gov Public Location Services API provides Location Services data including Country, State, City, and ZIP code validation for data submitted to SAM.gov (System for Award Management). This API requires a valid SAM.gov Federal Government System Account API key.\n\nContact Support:\n Name: GSA Open Technology",
+      "type": "text/plain"
+    }
+  }
+}
