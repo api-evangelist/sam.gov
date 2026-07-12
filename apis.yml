@@ -112,6 +112,8 @@ apis:
       - type: Documentation
         url: https://open.gsa.gov/api/contract-awards/
 common:
+  - type: DomainSecurity
+    url: security/sam.gov-domain-security.yml
   - type: Website
     url: https://sam.gov
   - type: Portal
