@@ -1,0 +1,93 @@
+openapi: 3.0.0
+info:
+  title: SAM.gov Public Location Services Cities States API
+  description: The SAM.gov Public Location Services API provides Location Services data including Country, State, City, and ZIP code validation for data submitted to SAM.gov (System for Award Management). This API requires a valid SAM.gov Federal Government System Account API key.
+  version: 1.0.0
+  contact:
+    name: GSA Open Technology
+    url: https://open.gsa.gov/api/location-public-api/
+  license:
+    name: Creative Commons Zero (CC0)
+    url: https://creativecommons.org/publicdomain/zero/1.0/
+servers:
+- url: https://api.sam.gov
+  description: SAM.gov Production API
+tags:
+- name: States
+  description: State and province lookup
+paths:
+  /locationservices/v1/states:
+    get:
+      tags:
+      - States
+      summary: Get List of States and Provinces
+      description: Retrieve a list of states, provinces, and subdivisions for both the United States and foreign countries. Supports searching by state/province name or code. Used to validate state data submitted to SAM.gov.
+      operationId: getStates
+      parameters:
+      - name: api_key
+        in: query
+        required: true
+        description: SAM.gov Federal Government System Account API key
+        schema:
+          type: string
+      - name: cc
+        in: query
+        required: false
+        description: Country code (ISO 3166-1 alpha-2, e.g. US for United States)
+        schema:
+          type: string
+      - name: searchby
+        in: query
+        required: false
+        description: Field to search by (e.g. statename, statecode)
+        schema:
+          type: string
+      - name: q
+        in: query
+        required: false
+        description: General query string for state name search
+        schema:
+          type: string
+      - name: active
+        in: query
+        required: false
+        description: Filter to active states/provinces only (Y/N)
+        schema:
+          type: string
+          enum:
+          - Y
+          - N
+      responses:
+        '200':
+          description: Successful response with list of states/provinces
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  totalRecords:
+                    type: integer
+                    description: Total number of matching records
+                  stateList:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        stateCode:
+                          type: string
+                          description: State/province code
+                        stateName:
+                          type: string
+                          description: State/province name
+                        countryCode:
+                          type: string
+                          description: Country code
+                        activeInd:
+                          type: string
+                          description: Active indicator (Y/N)
+        '400':
+          description: Bad request - invalid parameters
+        '401':
+          description: Unauthorized - invalid or missing API key
+        '500':
+          description: Internal server error

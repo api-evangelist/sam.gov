@@ -1,0 +1,92 @@
+openapi: 3.0.0
+info:
+  title: SAM.gov Public Location Services Cities ZIP Codes API
+  description: The SAM.gov Public Location Services API provides Location Services data including Country, State, City, and ZIP code validation for data submitted to SAM.gov (System for Award Management). This API requires a valid SAM.gov Federal Government System Account API key.
+  version: 1.0.0
+  contact:
+    name: GSA Open Technology
+    url: https://open.gsa.gov/api/location-public-api/
+  license:
+    name: Creative Commons Zero (CC0)
+    url: https://creativecommons.org/publicdomain/zero/1.0/
+servers:
+- url: https://api.sam.gov
+  description: SAM.gov Production API
+tags:
+- name: ZIP Codes
+  description: ZIP code validation
+paths:
+  /locationservices/v1/zip:
+    get:
+      tags:
+      - ZIP Codes
+      summary: Validate ZIP Code
+      description: Validate a ZIP code and retrieve associated location data including city, county, and state information. Used to validate ZIP code data being submitted to SAM.gov entity registrations and procurement forms.
+      operationId: validateZipCode
+      parameters:
+      - name: api_key
+        in: query
+        required: true
+        description: SAM.gov Federal Government System Account API key
+        schema:
+          type: string
+      - name: zip
+        in: query
+        required: true
+        description: ZIP code to validate (5 digits for US postal codes)
+        schema:
+          type: string
+      - name: citycode
+        in: query
+        required: false
+        description: City code filter
+        schema:
+          type: string
+      - name: countycode
+        in: query
+        required: false
+        description: County code filter
+        schema:
+          type: string
+      - name: statecode
+        in: query
+        required: false
+        description: State code filter
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response with ZIP code validation data
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  zip:
+                    type: string
+                    description: ZIP code queried
+                  cityList:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        cityCode:
+                          type: string
+                        cityName:
+                          type: string
+                        stateCode:
+                          type: string
+                        countyCode:
+                          type: string
+                        countyName:
+                          type: string
+                        countryCode:
+                          type: string
+        '400':
+          description: Bad request - invalid ZIP code format
+        '401':
+          description: Unauthorized - invalid or missing API key
+        '404':
+          description: ZIP code not found
+        '500':
+          description: Internal server error
