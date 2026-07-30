@@ -7,7 +7,19 @@ description: >-
   systems and provides APIs for contract opportunities, entity management, federal hierarchy, and location validation
   services.
 type: Index
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: free
+  onboarding: unknown
+  trial: false
+  try_now: false
+  public: false
+  label: Free
+  confidence: medium
+  source:
+  - plans
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/sam.gov.png
 tags:
   - Federal Government
   - Procurement
@@ -21,96 +33,114 @@ modified: '2026-05-19'
 x-profiled: 2026-05
 specificationVersion: '0.19'
 apis:
-  - aid: sam.gov:location-services-api
-    name: SAM.gov Public Location Services API
-    description: >-
-      The Public Location Services API provides Location Services data (Country, State, City, and ZIP) for validating
-      location data submitted to SAM.gov. Location Services State API supports both United States and Foreign Countries.
-      Requires a valid SAM.gov System Account API key.
-    humanURL: https://open.gsa.gov/api/location-public-api/
-    tags:
-      - Location Services
-      - Validation
-      - Government
-      - GSA
-    properties:
-      - type: Documentation
-        url: https://open.gsa.gov/api/location-public-api/
-      - type: OpenAPI
-        url: openapi/sam-gov-location-services-openapi.yml
-  - aid: sam.gov:get-opportunities-api
-    name: SAM.gov Get Opportunities Public API
-    description: >-
-      The Get Opportunities Public API provides all published contract opportunity details based on request parameters.
-      Returns solicitation notices, awards, and pre-solicitations from SAM.gov. Rate limited to 1000 requests/day.
-      Requires a SAM.gov API key.
-    humanURL: https://open.gsa.gov/api/get-opportunities-public-api/
-    tags:
-      - Contract Opportunities
-      - Procurement
-      - Federal Contracts
-      - Government
-    properties:
-      - type: Documentation
-        url: https://open.gsa.gov/api/get-opportunities-public-api/
-      - type: BaseURL
-        url: https://api.sam.gov/prod/opportunities/v2/search
-  - aid: sam.gov:opportunities-management-api
-    name: SAM.gov Opportunity Management API
-    description: >-
-      The Opportunity Management API allows authorized users to programmatically submit, update, and manage contract
-      opportunity notices in SAM.gov. Requires federal government or contractor system account authorization.
-    humanURL: https://open.gsa.gov/api/opportunities-api/
-    tags:
-      - Contract Management
-      - Procurement
-      - Federal Contracts
-      - Government
-    properties:
-      - type: Documentation
-        url: https://open.gsa.gov/api/opportunities-api/
-  - aid: sam.gov:entity-management-api
-    name: SAM.gov Entity Management API
-    description: >-
-      The Entity Management API provides detailed entity (vendor/contractor) information from SAM.gov including
-      registration status, hierarchy, security levels, points of contact, and certifications. Used to verify vendors
-      eligible for federal contracts.
-    humanURL: https://open.gsa.gov/api/entity-api/
-    tags:
-      - Entity Management
-      - Vendor Registration
-      - Federal Procurement
-      - Government
-    properties:
-      - type: Documentation
-        url: https://open.gsa.gov/api/entity-api/
-  - aid: sam.gov:federal-hierarchy-public-api
-    name: SAM.gov Federal Hierarchy Public API
-    description: >-
-      The Federal Hierarchy Public API allows non-federal users to retrieve Federal Organization details down to the
-      office level. Used to look up agency and organizational hierarchy for federal procurement purposes.
-    humanURL: https://open.gsa.gov/api/fh-public-api/
-    tags:
-      - Federal Hierarchy
-      - Government Organization
-      - Government
-    properties:
-      - type: Documentation
-        url: https://open.gsa.gov/api/fh-public-api/
-  - aid: sam.gov:contract-awards-api
-    name: SAM.gov Contract Awards API
-    description: >-
-      The Contract Awards API provides access to federal contract award information from SAM.gov, including award
-      details, vendor information, award amounts, and performance period data.
-    humanURL: https://open.gsa.gov/api/contract-awards/
-    tags:
-      - Contract Awards
-      - Federal Spending
-      - Procurement
-      - Government
-    properties:
-      - type: Documentation
-        url: https://open.gsa.gov/api/contract-awards/
+- aid: sam.gov:get-opportunities-api
+  name: SAM.gov Get Opportunities Public API
+  description: >-
+    The Get Opportunities Public API provides all published contract opportunity details based on request
+    parameters. Returns solicitation notices, awards, and pre-solicitations from SAM.gov. Rate limited
+    to 1000 requests/day. Requires a SAM.gov API key.
+  humanURL: https://open.gsa.gov/api/get-opportunities-public-api/
+  tags:
+  - Contract Opportunities
+  - Procurement
+  - Federal Contracts
+  - Government
+  properties:
+  - type: Documentation
+    url: https://open.gsa.gov/api/get-opportunities-public-api/
+  - type: BaseURL
+    url: https://api.sam.gov/prod/opportunities/v2/search
+- aid: sam.gov:opportunities-management-api
+  name: SAM.gov Opportunity Management API
+  description: >-
+    The Opportunity Management API allows authorized users to programmatically submit, update, and manage
+    contract opportunity notices in SAM.gov. Requires federal government or contractor system account
+    authorization.
+  humanURL: https://open.gsa.gov/api/opportunities-api/
+  tags:
+  - Contract Management
+  - Procurement
+  - Federal Contracts
+  - Government
+  properties:
+  - type: Documentation
+    url: https://open.gsa.gov/api/opportunities-api/
+- aid: sam.gov:entity-management-api
+  name: SAM.gov Entity Management API
+  description: >-
+    The Entity Management API provides detailed entity (vendor/contractor) information from SAM.gov including
+    registration status, hierarchy, security levels, points of contact, and certifications. Used to verify
+    vendors eligible for federal contracts.
+  humanURL: https://open.gsa.gov/api/entity-api/
+  tags:
+  - Entity Management
+  - Vendor Registration
+  - Federal Procurement
+  - Government
+  properties:
+  - type: Documentation
+    url: https://open.gsa.gov/api/entity-api/
+- aid: sam.gov:federal-hierarchy-public-api
+  name: SAM.gov Federal Hierarchy Public API
+  description: >-
+    The Federal Hierarchy Public API allows non-federal users to retrieve Federal Organization details
+    down to the office level. Used to look up agency and organizational hierarchy for federal procurement
+    purposes.
+  humanURL: https://open.gsa.gov/api/fh-public-api/
+  tags:
+  - Federal Hierarchy
+  - Government Organization
+  - Government
+  properties:
+  - type: Documentation
+    url: https://open.gsa.gov/api/fh-public-api/
+- aid: sam.gov:contract-awards-api
+  name: SAM.gov Contract Awards API
+  description: >-
+    The Contract Awards API provides access to federal contract award information from SAM.gov, including
+    award details, vendor information, award amounts, and performance period data.
+  humanURL: https://open.gsa.gov/api/contract-awards/
+  tags:
+  - Contract Awards
+  - Federal Spending
+  - Procurement
+  - Government
+  properties:
+  - type: Documentation
+    url: https://open.gsa.gov/api/contract-awards/
+- aid: sam.gov:sam.gov-cities-api
+  name: SAM.gov Cities API
+  description: City lookup and validation
+  humanURL: https://open.gsa.gov/api/location-public-api/
+  tags:
+  - Cities
+  properties:
+  - type: OpenAPI
+    url: openapi/sam.gov-cities-api-openapi.yml
+  - type: Documentation
+    url: https://open.gsa.gov/api/location-public-api/
+- aid: sam.gov:sam.gov-states-api
+  name: SAM.gov States API
+  description: State and province lookup
+  humanURL: https://open.gsa.gov/api/location-public-api/
+  tags:
+  - States
+  properties:
+  - type: OpenAPI
+    url: openapi/sam.gov-states-api-openapi.yml
+  - type: Documentation
+    url: https://open.gsa.gov/api/location-public-api/
+- aid: sam.gov:sam.gov-zip-codes-api
+  name: SAM.gov ZIP Codes API
+  description: ZIP code validation
+  humanURL: https://open.gsa.gov/api/location-public-api/
+  tags:
+  - ZIP Codes
+  properties:
+  - type: OpenAPI
+    url: openapi/sam.gov-zip-codes-api-openapi.yml
+  - type: Documentation
+    url: https://open.gsa.gov/api/location-public-api/
 common:
   - type: AgenticAccess
     url: agentic-access/sam.gov-agentic-access.yml
