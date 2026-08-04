@@ -1,0 +1,272 @@
+openapi: 3.0.0
+info:
+  title: SAM.gov Public Location Services API
+  description: >-
+    The SAM.gov Public Location Services API provides Location Services data including
+    Country, State, City, and ZIP code validation for data submitted to SAM.gov
+    (System for Award Management). This API requires a valid SAM.gov Federal Government
+    System Account API key.
+  version: 1.0.0
+  contact:
+    name: GSA Open Technology
+    url: https://open.gsa.gov/api/location-public-api/
+  license:
+    name: Creative Commons Zero (CC0)
+    url: https://creativecommons.org/publicdomain/zero/1.0/
+servers:
+  - url: https://api.sam.gov
+    description: SAM.gov Production API
+tags:
+  - name: Cities
+    description: City lookup and validation
+  - name: States
+    description: State and province lookup
+  - name: ZIP Codes
+    description: ZIP code validation
+paths:
+  /locationservices/v1/cities:
+    get:
+      tags:
+        - Cities
+      summary: Get List of Cities
+      description: >-
+        Retrieve a list of cities for a given country code. Supports searching
+        by city name, active status, and city code filters. Used to validate
+        city data being submitted to SAM.gov.
+      operationId: getCities
+      parameters:
+        - name: api_key
+          in: query
+          required: true
+          description: SAM.gov Federal Government System Account API key
+          schema:
+            type: string
+        - name: cc
+          in: query
+          required: false
+          description: Country code (ISO 3166-1 alpha-2, e.g. US for United States)
+          schema:
+            type: string
+        - name: searchby
+          in: query
+          required: false
+          description: Field to search by (e.g. cityname, citycode)
+          schema:
+            type: string
+        - name: searchvalue
+          in: query
+          required: false
+          description: Value to search for
+          schema:
+            type: string
+        - name: q
+          in: query
+          required: false
+          description: General query string for city name search
+          schema:
+            type: string
+        - name: active
+          in: query
+          required: false
+          description: Filter to active cities only (Y/N)
+          schema:
+            type: string
+            enum: [Y, N]
+        - name: citycode
+          in: query
+          required: false
+          description: City code to filter by
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response with list of cities
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  totalRecords:
+                    type: integer
+                    description: Total number of matching records
+                  cityList:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        cityCode:
+                          type: string
+                          description: City code
+                        cityName:
+                          type: string
+                          description: City name
+                        stateCode:
+                          type: string
+                          description: State/province code
+                        countryCode:
+                          type: string
+                          description: Country code
+                        activeInd:
+                          type: string
+                          description: Active indicator (Y/N)
+        '400':
+          description: Bad request - invalid parameters
+        '401':
+          description: Unauthorized - invalid or missing API key
+        '500':
+          description: Internal server error
+
+  /locationservices/v1/states:
+    get:
+      tags:
+        - States
+      summary: Get List of States and Provinces
+      description: >-
+        Retrieve a list of states, provinces, and subdivisions for both the United
+        States and foreign countries. Supports searching by state/province name or
+        code. Used to validate state data submitted to SAM.gov.
+      operationId: getStates
+      parameters:
+        - name: api_key
+          in: query
+          required: true
+          description: SAM.gov Federal Government System Account API key
+          schema:
+            type: string
+        - name: cc
+          in: query
+          required: false
+          description: Country code (ISO 3166-1 alpha-2, e.g. US for United States)
+          schema:
+            type: string
+        - name: searchby
+          in: query
+          required: false
+          description: Field to search by (e.g. statename, statecode)
+          schema:
+            type: string
+        - name: q
+          in: query
+          required: false
+          description: General query string for state name search
+          schema:
+            type: string
+        - name: active
+          in: query
+          required: false
+          description: Filter to active states/provinces only (Y/N)
+          schema:
+            type: string
+            enum: [Y, N]
+      responses:
+        '200':
+          description: Successful response with list of states/provinces
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  totalRecords:
+                    type: integer
+                    description: Total number of matching records
+                  stateList:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        stateCode:
+                          type: string
+                          description: State/province code
+                        stateName:
+                          type: string
+                          description: State/province name
+                        countryCode:
+                          type: string
+                          description: Country code
+                        activeInd:
+                          type: string
+                          description: Active indicator (Y/N)
+        '400':
+          description: Bad request - invalid parameters
+        '401':
+          description: Unauthorized - invalid or missing API key
+        '500':
+          description: Internal server error
+
+  /locationservices/v1/zip:
+    get:
+      tags:
+        - ZIP Codes
+      summary: Validate ZIP Code
+      description: >-
+        Validate a ZIP code and retrieve associated location data including city,
+        county, and state information. Used to validate ZIP code data being submitted
+        to SAM.gov entity registrations and procurement forms.
+      operationId: validateZipCode
+      parameters:
+        - name: api_key
+          in: query
+          required: true
+          description: SAM.gov Federal Government System Account API key
+          schema:
+            type: string
+        - name: zip
+          in: query
+          required: true
+          description: ZIP code to validate (5 digits for US postal codes)
+          schema:
+            type: string
+        - name: citycode
+          in: query
+          required: false
+          description: City code filter
+          schema:
+            type: string
+        - name: countycode
+          in: query
+          required: false
+          description: County code filter
+          schema:
+            type: string
+        - name: statecode
+          in: query
+          required: false
+          description: State code filter
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response with ZIP code validation data
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  zip:
+                    type: string
+                    description: ZIP code queried
+                  cityList:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        cityCode:
+                          type: string
+                        cityName:
+                          type: string
+                        stateCode:
+                          type: string
+                        countyCode:
+                          type: string
+                        countyName:
+                          type: string
+                        countryCode:
+                          type: string
+        '400':
+          description: Bad request - invalid ZIP code format
+        '401':
+          description: Unauthorized - invalid or missing API key
+        '404':
+          description: ZIP code not found
+        '500':
+          description: Internal server error

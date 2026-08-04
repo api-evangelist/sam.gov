@@ -1,0 +1,18 @@
+{
+  "provider": "sam.gov",
+  "sources": [
+    "sam.gov-cities-api-openapi.yml",
+    "sam.gov-states-api-openapi.yml",
+    "sam.gov-zip-codes-api-openapi.yml"
+  ],
+  "outputs": [
+    "sam.gov-cities-api-openapi.yml",
+    "sam.gov-states-api-openapi.yml",
+    "sam.gov-zip-codes-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
