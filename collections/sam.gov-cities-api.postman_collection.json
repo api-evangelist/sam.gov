@@ -1,0 +1,358 @@
+{
+  "item": [
+    {
+      "id": "28c3587d-6ca4-4516-89be-f2b82733a7b7",
+      "name": "Cities",
+      "description": {
+        "content": "City lookup and validation",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f6ad8de1-7f7d-47fc-9f4e-0126a9a55ce3",
+          "name": "Get List of Cities",
+          "request": {
+            "name": "Get List of Cities",
+            "description": {
+              "content": "Retrieve a list of cities for a given country code. Supports searching by city name, active status, and city code filters. Used to validate city data being submitted to SAM.gov.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "locationservices",
+                "v1",
+                "cities"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "api_key",
+                  "value": "<string>",
+                  "description": "(Required) SAM.gov Federal Government System Account API key"
+                },
+                {
+                  "disabled": false,
+                  "key": "cc",
+                  "value": "<string>",
+                  "description": "Country code (ISO 3166-1 alpha-2, e.g. US for United States)"
+                },
+                {
+                  "disabled": false,
+                  "key": "searchby",
+                  "value": "<string>",
+                  "description": "Field to search by (e.g. cityname, citycode)"
+                },
+                {
+                  "disabled": false,
+                  "key": "searchvalue",
+                  "value": "<string>",
+                  "description": "Value to search for"
+                },
+                {
+                  "disabled": false,
+                  "key": "q",
+                  "value": "<string>",
+                  "description": "General query string for city name search"
+                },
+                {
+                  "disabled": false,
+                  "key": "active",
+                  "value": "<string>",
+                  "description": "Filter to active cities only (Y/N)"
+                },
+                {
+                  "disabled": false,
+                  "key": "citycode",
+                  "value": "<string>",
+                  "description": "City code to filter by"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d127b847-a9d9-4da0-adb6-8ed43a375b73",
+              "name": "Successful response with list of cities",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "locationservices",
+                    "v1",
+                    "cities"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api_key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "cc",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "searchby",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "searchvalue",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "active",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "citycode",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"totalRecords\": 2786,\n  \"cityList\": [\n    {\n      \"cityCode\": \"string\",\n      \"cityName\": \"string\",\n      \"stateCode\": \"string\",\n      \"countryCode\": \"string\",\n      \"activeInd\": \"string\"\n    },\n    {\n      \"cityCode\": \"string\",\n      \"cityName\": \"string\",\n      \"stateCode\": \"string\",\n      \"countryCode\": \"string\",\n      \"activeInd\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9b24f9b3-8a58-4a5e-adca-895354f6a3e3",
+              "name": "Bad request - invalid parameters",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "locationservices",
+                    "v1",
+                    "cities"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api_key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "cc",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "searchby",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "searchvalue",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "active",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "citycode",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "96c63e69-ef0e-4dfb-84c1-82a5d8efac10",
+              "name": "Unauthorized - invalid or missing API key",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "locationservices",
+                    "v1",
+                    "cities"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api_key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "cc",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "searchby",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "searchvalue",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "active",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "citycode",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "79d143c6-ed73-49c2-a0e2-08805986fd1d",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "locationservices",
+                    "v1",
+                    "cities"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api_key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "cc",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "searchby",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "searchvalue",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "active",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "citycode",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.sam.gov",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "4d019fb5-cf0a-4d07-8508-0398e7ce0727",
+    "name": "SAM.gov Public Location Services Cities API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The SAM.gov Public Location Services API provides Location Services data including Country, State, City, and ZIP code validation for data submitted to SAM.gov (System for Award Management). This API requires a valid SAM.gov Federal Government System Account API key.\n\nContact Support:\n Name: GSA Open Technology",
+      "type": "text/plain"
+    }
+  }
+}

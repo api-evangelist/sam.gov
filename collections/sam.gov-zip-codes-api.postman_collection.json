@@ -1,0 +1,366 @@
+{
+  "item": [
+    {
+      "id": "a926caaa-b353-4b33-89c9-46d5159779ba",
+      "name": "ZIP Codes",
+      "description": {
+        "content": "ZIP code validation",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "d6c9f854-2712-430b-86b9-652e3b8ded42",
+          "name": "Validate ZIP Code",
+          "request": {
+            "name": "Validate ZIP Code",
+            "description": {
+              "content": "Validate a ZIP code and retrieve associated location data including city, county, and state information. Used to validate ZIP code data being submitted to SAM.gov entity registrations and procurement forms.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "locationservices",
+                "v1",
+                "zip"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "api_key",
+                  "value": "<string>",
+                  "description": "(Required) SAM.gov Federal Government System Account API key"
+                },
+                {
+                  "disabled": false,
+                  "key": "zip",
+                  "value": "<string>",
+                  "description": "(Required) ZIP code to validate (5 digits for US postal codes)"
+                },
+                {
+                  "disabled": false,
+                  "key": "citycode",
+                  "value": "<string>",
+                  "description": "City code filter"
+                },
+                {
+                  "disabled": false,
+                  "key": "countycode",
+                  "value": "<string>",
+                  "description": "County code filter"
+                },
+                {
+                  "disabled": false,
+                  "key": "statecode",
+                  "value": "<string>",
+                  "description": "State code filter"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "28835519-f3df-4f88-ad48-564abec2788a",
+              "name": "Successful response with ZIP code validation data",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "locationservices",
+                    "v1",
+                    "zip"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api_key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "zip",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "citycode",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "countycode",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "statecode",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"zip\": \"string\",\n  \"cityList\": [\n    {\n      \"cityCode\": \"string\",\n      \"cityName\": \"string\",\n      \"stateCode\": \"string\",\n      \"countyCode\": \"string\",\n      \"countyName\": \"string\",\n      \"countryCode\": \"string\"\n    },\n    {\n      \"cityCode\": \"string\",\n      \"cityName\": \"string\",\n      \"stateCode\": \"string\",\n      \"countyCode\": \"string\",\n      \"countyName\": \"string\",\n      \"countryCode\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "db7e628e-f25f-4d72-b500-f667a48705a9",
+              "name": "Bad request - invalid ZIP code format",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "locationservices",
+                    "v1",
+                    "zip"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api_key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "zip",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "citycode",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "countycode",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "statecode",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9c278e5e-b52d-4f1d-a21b-6abf7a7680c9",
+              "name": "Unauthorized - invalid or missing API key",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "locationservices",
+                    "v1",
+                    "zip"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api_key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "zip",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "citycode",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "countycode",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "statecode",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "633968d2-8063-4105-9112-b61e9541dabd",
+              "name": "ZIP code not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "locationservices",
+                    "v1",
+                    "zip"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api_key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "zip",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "citycode",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "countycode",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "statecode",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "6341bf38-2efa-4a3a-82e2-99c3d3093e64",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "locationservices",
+                    "v1",
+                    "zip"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api_key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "zip",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "citycode",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "countycode",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "statecode",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.sam.gov",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "7fc0f86a-d20f-4407-8341-550312ced7e8",
+    "name": "SAM.gov Public Location Services Cities ZIP Codes API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The SAM.gov Public Location Services API provides Location Services data including Country, State, City, and ZIP code validation for data submitted to SAM.gov (System for Award Management). This API requires a valid SAM.gov Federal Government System Account API key.\n\nContact Support:\n Name: GSA Open Technology",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,73 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "SAM.gov Public Location Services Cities API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Cities",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get List of Cities",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sam.gov/locationservices/v1/cities",
+            "params": [
+              {
+                "name": "api_key",
+                "value": "",
+                "type": "query",
+                "description": "SAM.gov Federal Government System Account API key"
+              },
+              {
+                "name": "cc",
+                "value": "",
+                "type": "query",
+                "description": "Country code (ISO 3166-1 alpha-2, e.g. US for United States)"
+              },
+              {
+                "name": "searchby",
+                "value": "",
+                "type": "query",
+                "description": "Field to search by (e.g. cityname, citycode)"
+              },
+              {
+                "name": "searchvalue",
+                "value": "",
+                "type": "query",
+                "description": "Value to search for"
+              },
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "General query string for city name search"
+              },
+              {
+                "name": "active",
+                "value": "",
+                "type": "query",
+                "description": "Filter to active cities only (Y/N)"
+              },
+              {
+                "name": "citycode",
+                "value": "",
+                "type": "query",
+                "description": "City code to filter by"
+              }
+            ]
+          },
+          "docs": "Retrieve a list of cities for a given country code. Supports searching by city name, active status, and city code filters. Used to validate city data being submitted to SAM.gov."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

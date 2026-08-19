@@ -1,0 +1,314 @@
+{
+  "item": [
+    {
+      "id": "1fad7ac6-876c-47dd-8892-2c9f7bd2593f",
+      "name": "States",
+      "description": {
+        "content": "State and province lookup",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "053e1bf1-8df0-4f74-830f-aea59feb4d2c",
+          "name": "Get List of States and Provinces",
+          "request": {
+            "name": "Get List of States and Provinces",
+            "description": {
+              "content": "Retrieve a list of states, provinces, and subdivisions for both the United States and foreign countries. Supports searching by state/province name or code. Used to validate state data submitted to SAM.gov.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "locationservices",
+                "v1",
+                "states"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "api_key",
+                  "value": "<string>",
+                  "description": "(Required) SAM.gov Federal Government System Account API key"
+                },
+                {
+                  "disabled": false,
+                  "key": "cc",
+                  "value": "<string>",
+                  "description": "Country code (ISO 3166-1 alpha-2, e.g. US for United States)"
+                },
+                {
+                  "disabled": false,
+                  "key": "searchby",
+                  "value": "<string>",
+                  "description": "Field to search by (e.g. statename, statecode)"
+                },
+                {
+                  "disabled": false,
+                  "key": "q",
+                  "value": "<string>",
+                  "description": "General query string for state name search"
+                },
+                {
+                  "disabled": false,
+                  "key": "active",
+                  "value": "<string>",
+                  "description": "Filter to active states/provinces only (Y/N)"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "bc737489-c75a-44c0-8185-1d1bc07f989b",
+              "name": "Successful response with list of states/provinces",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "locationservices",
+                    "v1",
+                    "states"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api_key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "cc",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "searchby",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "active",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"totalRecords\": 1775,\n  \"stateList\": [\n    {\n      \"stateCode\": \"string\",\n      \"stateName\": \"string\",\n      \"countryCode\": \"string\",\n      \"activeInd\": \"string\"\n    },\n    {\n      \"stateCode\": \"string\",\n      \"stateName\": \"string\",\n      \"countryCode\": \"string\",\n      \"activeInd\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5617d647-fe5b-41cc-8f57-b8a64795a571",
+              "name": "Bad request - invalid parameters",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "locationservices",
+                    "v1",
+                    "states"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api_key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "cc",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "searchby",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "active",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "fac09325-1258-4c06-b157-a44fbc206f49",
+              "name": "Unauthorized - invalid or missing API key",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "locationservices",
+                    "v1",
+                    "states"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api_key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "cc",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "searchby",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "active",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "89e679af-8190-42e7-930b-a5d5642f5ced",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "locationservices",
+                    "v1",
+                    "states"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api_key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "cc",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "searchby",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "active",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.sam.gov",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "02c2826a-1136-4d77-8b0e-34b7feae9058",
+    "name": "SAM.gov Public Location Services Cities States API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The SAM.gov Public Location Services API provides Location Services data including Country, State, City, and ZIP code validation for data submitted to SAM.gov (System for Award Management). This API requires a valid SAM.gov Federal Government System Account API key.\n\nContact Support:\n Name: GSA Open Technology",
+      "type": "text/plain"
+    }
+  }
+}
