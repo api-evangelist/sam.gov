@@ -1,9 +1,7 @@
 {
   "provider": "sam.gov",
   "sources": [
-    "sam.gov-cities-api-openapi.yml",
-    "sam.gov-states-api-openapi.yml",
-    "sam.gov-zip-codes-api-openapi.yml"
+    "_original/sam-gov-location-services-openapi.yml"
   ],
   "outputs": [
     "sam.gov-cities-api-openapi.yml",
@@ -13,6 +11,14 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "sam-gov-location-services-openapi.yml: upgraded openapi 3.0.0 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "sam.gov-cities-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "sam.gov-states-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "sam.gov-zip-codes-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

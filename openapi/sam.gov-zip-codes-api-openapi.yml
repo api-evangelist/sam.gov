@@ -1,6 +1,6 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
-  title: SAM.gov Public Location Services Cities ZIP Codes API
+  title: SAM.gov Public Location Services ZIP Codes API
   description: The SAM.gov Public Location Services API provides Location Services data including Country, State, City, and ZIP code validation for data submitted to SAM.gov (System for Award Management). This API requires a valid SAM.gov Federal Government System Account API key.
   version: 1.0.0
   contact:
