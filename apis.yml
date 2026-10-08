@@ -161,6 +161,12 @@ apis:
   - type: Documentation
     url: https://open.gsa.gov/api/location-public-api/
 common:
+  - type: Plans
+    url: plans/sam.gov-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/sam.gov-rate-limits.yml
+  - type: FinOps
+    url: finops/sam.gov-finops.yml
   - type: AgenticAccess
     url: agentic-access/sam.gov-agentic-access.yml
   - type: DomainSecurity
